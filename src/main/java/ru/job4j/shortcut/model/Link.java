@@ -13,14 +13,35 @@ public class Link {
 
     private String url;
 
+    private String code;
+
+    private int total;
+
     @ManyToOne
     private Site site;
 
     public Link() { }
 
-    public Link(String url, Site site) {
+    public Link(String url, Site site, String code) {
         this.url = url;
         this.site = site;
+        this.code = code;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public int getTotal() {
+        return total;
+    }
+
+    public void setTotal(int total) {
+        this.total = total;
     }
 
     public Integer getId() {
