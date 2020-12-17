@@ -17,6 +17,8 @@ public interface LinkRepository extends JpaRepository<Link, Integer> {
 
     Link findByCode(String code);
 
+    Link findByUrl(String url);
+
     @Transactional
     @Modifying(clearAutomatically = true, flushAutomatically = true)
     @Query(
