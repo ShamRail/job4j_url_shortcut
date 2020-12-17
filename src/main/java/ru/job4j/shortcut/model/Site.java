@@ -24,6 +24,10 @@ public class Site {
 
     public Site() { }
 
+    public Site(String site) {
+        this.site = site;
+    }
+
     public Site(String login, String password, String site) {
         this.login = login;
         this.password = password;
