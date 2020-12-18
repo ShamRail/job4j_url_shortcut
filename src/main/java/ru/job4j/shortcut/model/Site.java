@@ -83,12 +83,12 @@ public class Site {
 
     @Override
     public String toString() {
-        return "Site{" +
-                "id=" + id +
-                ", login='" + login + '\'' +
-                ", password='" + password + '\'' +
-                ", site='" + site + '\'' +
-                '}';
+        return "Site{"
+                + "id=" + id
+                + ", login='" + login + '\''
+                + ", password='" + password + '\''
+                + ", site='" + site + '\''
+                + '}';
     }
 
     @Override

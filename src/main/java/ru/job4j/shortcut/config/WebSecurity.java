@@ -24,7 +24,7 @@ import static ru.job4j.shortcut.filter.JWTAuthenticationFilter.SIGN_IN_URL;
 import static ru.job4j.shortcut.filter.JWTAuthenticationFilter.SIGN_UP_URL;
 
 @Configuration
-@EnableWebSecurity(debug = true)
+@EnableWebSecurity
 @Profile(value = {Profiles.DEV})
 public class WebSecurity extends WebSecurityConfigurerAdapter {
 

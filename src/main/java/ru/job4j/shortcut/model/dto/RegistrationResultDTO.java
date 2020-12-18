@@ -51,9 +51,9 @@ public class RegistrationResultDTO {
             return false;
         }
         RegistrationResultDTO resultDTO = (RegistrationResultDTO) o;
-        return registration == resultDTO.registration &&
-                Objects.equals(login, resultDTO.login) &&
-                Objects.equals(password, resultDTO.password);
+        return registration == resultDTO.registration
+                && Objects.equals(login, resultDTO.login)
+                && Objects.equals(password, resultDTO.password);
     }
 
     @Override
