@@ -1,5 +1,7 @@
 package ru.job4j.shortcut.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Objects;
 
@@ -18,9 +20,15 @@ public class Link {
     private int total;
 
     @ManyToOne
+    @JsonIgnore
     private Site site;
 
     public Link() { }
+
+    public Link(String url, Site site) {
+        this.url = url;
+        this.site = site;
+    }
 
     public Link(String url, Site site, String code) {
         this.url = url;

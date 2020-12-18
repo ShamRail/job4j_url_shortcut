@@ -1,6 +1,7 @@
 package ru.job4j.shortcut.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import ru.job4j.shortcut.model.Site;
 import ru.job4j.shortcut.model.dto.RegistrationResultDTO;
@@ -13,12 +14,16 @@ public class SiteServiceImpl implements SiteService {
 
     private SequenceGenerator sequenceGenerator;
 
-    public SiteServiceImpl() { }
+    private PasswordEncoder passwordEncoder;
 
     @Autowired
-    public SiteServiceImpl(SiteRepository siteRepository, SequenceGenerator sequenceGenerator) {
+    public SiteServiceImpl(
+            SiteRepository siteRepository,
+            SequenceGenerator sequenceGenerator,
+            PasswordEncoder passwordEncoder) {
         this.siteRepository = siteRepository;
         this.sequenceGenerator = sequenceGenerator;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @Override
@@ -30,10 +35,11 @@ public class SiteServiceImpl implements SiteService {
             );
         }
         site.setLogin(sequenceGenerator.generate(site.getSite()));
-        site.setPassword(sequenceGenerator.generate());
+        String password = sequenceGenerator.generate();
+        site.setPassword(passwordEncoder.encode(password));
         siteRepository.save(site);
         return new RegistrationResultDTO(
-                true, site.getLogin(), site.getPassword()
+                true, site.getLogin(), password
         );
     }
 
