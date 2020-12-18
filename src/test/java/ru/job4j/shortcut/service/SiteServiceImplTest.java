@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Bean;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.test.context.junit4.SpringRunner;
 import ru.job4j.shortcut.model.Site;
 import ru.job4j.shortcut.model.dto.RegistrationResultDTO;
@@ -26,12 +25,9 @@ public class SiteServiceImplTest {
         @MockBean
         private SequenceGenerator sequenceGenerator;
 
-        @MockBean
-        private PasswordEncoder passwordEncoder;
-
         @Bean
         SiteService siteService() {
-            return new SiteServiceImpl(siteRepository, sequenceGenerator, passwordEncoder);
+            return new SiteServiceImpl(siteRepository, sequenceGenerator);
         }
     }
 
@@ -44,16 +40,12 @@ public class SiteServiceImplTest {
     @Autowired
     private SequenceGenerator sequenceGenerator;
 
-    @Autowired
-    private PasswordEncoder passwordEncoder;
-
     @Test
     public void whenRegisterNewSite() {
         Site site = new Site("login", "pass", "job4j.ru");
         Mockito.when(siteRepository.findBySite(site.getSite())).thenReturn(null);
         Mockito.when(sequenceGenerator.generate(site.getSite())).thenReturn(site.getLogin());
         Mockito.when(sequenceGenerator.generate()).thenReturn(site.getPassword());
-        Mockito.when(passwordEncoder.encode(site.getPassword())).thenReturn(site.getPassword());
         Mockito.when(siteRepository.save(site)).thenReturn(site);
         RegistrationResultDTO expected = new RegistrationResultDTO(
                 true, site.getLogin(), site.getPassword()
