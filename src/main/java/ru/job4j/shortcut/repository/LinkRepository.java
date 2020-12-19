@@ -22,8 +22,7 @@ public interface LinkRepository extends JpaRepository<Link, Integer> {
     @Transactional
     @Modifying(clearAutomatically = true, flushAutomatically = true)
     @Query(
-            nativeQuery = true,
-            value = "update links set total = (select total from links where id = :link) + 1 where id = :link"
+            value = "update Link l set l.total = :#{#link.total} + 1 where l.id = :#{#link.id}"
     )
     int increaseTotal(Link link);
 
