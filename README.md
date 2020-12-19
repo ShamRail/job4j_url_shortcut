@@ -2,10 +2,10 @@
 
 ### Project description
 
-Project represent basic url shortcut service. User register his site and convert his own links 
+Project represents basic url shortcut service. User registers his site and converts his own links 
 using this service and paste it anywhere. Redirecting goes through service which count link clicks. 
   
-### User technologies
+### Used technologies
 
 * Java 14
 * Spring Boot 2
