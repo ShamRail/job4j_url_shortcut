@@ -1,4 +1,4 @@
-## jobj4_url_shortcut ![img](https://travis-ci.com/ShamRail/job4j_url_shortcut.svg?branch=master)
+## jobj4_url_shortcut ![img](https://travis-ci.com/ShamRail/job4j_url_shortcut.svg?branch=master) ![img](https://img.shields.io/docker/cloud/automated/shrail/job4j_shortcut) ![img](https://img.shields.io/docker/cloud/build/shrail/job4j_shortcut)
 
 ### Project description
 
