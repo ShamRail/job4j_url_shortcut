@@ -9,18 +9,24 @@ services:
       - POSTGRES_DB=shortcut
       - PGDATA=/var/lib/postgresql/data
     volumes:
-      - ./db/shortcut/data:/var/lib/postgresql/data
+      - pgdata:/var/lib/postgresql/data
     ports:
-      - 5432:5432
+      - "5435:5432"
     restart: always
   app:
-    image: shortcut
+    build:
+      context: .
+      dockerfile: Dockerfile
     container_name: shortcut
     environment:
       - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/shortcut
       - SPRING_DATASOURCE_USERNAME=postgres
       - SPRING_DATASOURCE_PASSWORD=password
     ports:
-      - 127.0.0.1:80:8080
+      - "127.0.0.1:8080:8080"
     depends_on:
       - db
+
+# fix for Windows
+volumes:
+  pgdata:

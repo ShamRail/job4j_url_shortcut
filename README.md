@@ -54,6 +54,16 @@ java -jar target/shortcut-0.0.1-SNAPSHOT.jar --db=shortcut --user=postgres --pas
 java -jar target/shortcut-0.0.1-SNAPSHOT.jar
 ````
 
+#### Using Docker:
+1. Build
+```shell
+docker-compose build
+```
+2. Run
+```shell
+docker-compose up
+```
+
 ### Using REST API
 
 #### Register site
